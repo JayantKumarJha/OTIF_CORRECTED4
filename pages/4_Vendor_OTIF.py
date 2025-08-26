@@ -81,7 +81,7 @@ def compute_lead_time_for_row(row: pd.Series, rules: dict):
 
 @st.cache_data(show_spinner=True)
 def load_and_clean(file) -> pd.DataFrame:
-    df = pd.read_excel(file)
+    df = pd.read_excel(file, engine="openpyxl")
     df = clean_columns(df)
     missing = validate_required_columns(df)
     if missing:
